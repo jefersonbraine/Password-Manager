@@ -30,10 +30,10 @@ class BaseModel:
         
         results = []
 
-        atributos = vars(cls())
+        atributos = vars(cls()).keys()
 
         for i in x:
-            split_v = (i.split('|'))
+            split_v = i.split('|')
             tmp_dict = dict(zip(atributos, split_v))
             results.append(tmp_dict)
 
@@ -41,9 +41,9 @@ class BaseModel:
 
 
 class Password(BaseModel):
-    def __init__ (self, domain=None, Password=None, expire=False):
+    def __init__ (self, domain=None, password=None, expire=False):
         self.domain = domain
-        self.password = Password
+        self.password = password
         self.create_at = datetime.now().isoformat()
 
 
